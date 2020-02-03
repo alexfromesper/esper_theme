@@ -37,7 +37,6 @@ export default ({
     
     if (windowStatus) {
         scene = new Scene()
-        camera = new PerspectiveCamera( 100, 1920 / 1080, 1, 2000 )
         renderer = windowStatus && new WebGLRenderer({ alpha: true })
 
         // Add Objects to Scene
@@ -90,19 +89,20 @@ export default ({
         }
     
         requestAnimationFrame(animate)
-        render()
+        render(camera)
     }
 
     useEffect(() => {
         const width = wrapper.current.clientWidth
         const height = wrapper.current.clientHeight
-        
+
+        camera = new PerspectiveCamera( 100, width / height, 1, 2000 )
         renderer.setSize( width, height )
 
-        animate()
+        animate(camera)
         wrapper.current.appendChild( renderer.domElement )
 
-    }, [ wrapper, animate, renderer ])
+    }, [ wrapper, animate, renderer, camera ])
     return (
         <Section ref={wrapper}>
             <Container
