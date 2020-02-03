@@ -37,6 +37,7 @@ export default ({
     
     if (windowStatus) {
         scene = new Scene()
+        camera = new PerspectiveCamera( 100, 1920 / 1080, 1, 2000 )
         renderer = windowStatus && new WebGLRenderer({ alpha: true })
 
         // Add Objects to Scene
@@ -53,13 +54,13 @@ export default ({
             vertices.push( x, y, z )
         }
 
-        geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) )
+        geometry.setAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) )
 
         for ( var d = 0; d < parameters.length; d ++ ) {
             const sprite = textureLoader.load( Circle )
             const size = parameters[ d ]
 
-            materials[ d ] = new PointsMaterial( { size, map: sprite, blending: AdditiveBlending, depthTest: false, transparent: true, opacity: 0.5 } )
+            materials[ d ] = new PointsMaterial( { size, map: sprite, blending: AdditiveBlending, depthTest: false, transparent: true, opacity: 0.4 } )
             materials[ d ].color.set(0xdf1f26)
 
             const particles = new Points( geometry, materials[ d ] )
@@ -89,20 +90,19 @@ export default ({
         }
     
         requestAnimationFrame(animate)
-        render(camera)
+        render()
     }
 
     useEffect(() => {
         const width = wrapper.current.clientWidth
         const height = wrapper.current.clientHeight
-
-        camera = new PerspectiveCamera( 100, width / height, 1, 2000 )
+        
         renderer.setSize( width, height )
 
-        animate(camera)
+        animate()
         wrapper.current.appendChild( renderer.domElement )
 
-    }, [ wrapper, animate, renderer, camera ])
+    }, [ wrapper, animate, renderer ])
     return (
         <Section ref={wrapper}>
             <Container
