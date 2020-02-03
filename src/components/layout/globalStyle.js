@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
-html, body, div, span, object, iframe,
+html, body, div, span, object, iframe, hr,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, code,
 del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
@@ -15,76 +15,100 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   font-size: 100%;
   font-family: inherit;
 }
-html {
-    box-sizing: border-box;
-}
-* {
-    box-sizing: inherit;
-}
-*:before {
-    box-sizing: inherit;
-}
-*:after {
-    box-sizing: inherit;
-}
+
 em {
 	font-style: italic;
 }
+
 strong {
 	font-weight: bold;
 }
+
 html,
 body {
-	margin:0;
-	padding:0;
 	height:100%;
 }
+
+/* END RESET */
+
 body {
-    background-color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    color:${props => props.theme.color.body};
-    font-size: 1rem;
-    font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    font-feature-settings: 'kern' 1, 'dlig' 1, 'opbd' 1, 'ss01' 1;
-    text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+	background: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: ${props => props.theme.color.body};
 }
-*, :after, :before {
-    box-sizing: border-box;
+section {
+    position:relative;
 }
-ul {
-    list-style:none;
-    margin:0;
-    padding:0;
-}
+
 p {
     line-height: 1.5;
+    font-size:1rem;
 }
-img {
-    max-width:100%;
+h1 {
+    font-size:2rem;
+    font-weight:bold;
 }
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {}
+h2 {
+    font-size:1.75rem;
+    font-weight:bold;
+}
+h3 {
+    font-size:1.5rem;
+    font-weight:bold;
+}
+h4 {
+    font-size:1.25rem;
+    font-weight:bold;
+}
+h5 {
+    font-size:1.15rem;
+    font-weight:bold;
+}
+h6 {
+    font-size:1.1rem;
+    font-weight:bold;
+}
+
 a img {
 	border: none;
 	outline: none;
 }
+
 a {
-    color: inherit;
 	outline: none;
-    text-decoration: none;
-    line-height: inherit;
+	text-decoration: none;
 }
+
+a:hover {
+	color: #999;
+}
+
 a,
 a:active,
 a:visited,
 a img {
 	outline: none;
+}
+
+@media (min-width:992px) {
+    h1 {
+        font-size:2.5rem
+    }
+    h2 {
+        font-size:2.25rem;
+    }
+    h3 {
+        font-size:2rem;
+    }
+    h4 {
+        font-size:1.75rem;
+    }
+    h5 {
+        font-size:1.5rem;
+    }
+    h6 {
+        font-size:1.25rem;
+    }
 }
 `

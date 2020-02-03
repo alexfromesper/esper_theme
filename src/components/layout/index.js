@@ -28,6 +28,8 @@ export default ({
 
 // Styled Components
 const Main = styled.main`
-    padding-top:3rem;
-    padding-bottom:3rem;
+    margin-top:${props => props.theme.header.mobile};
+    @media (min-width:992px) {
+        margin-top:${props => props.theme.header.desktop};
+    }
 `

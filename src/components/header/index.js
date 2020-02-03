@@ -11,7 +11,7 @@ export default () => {
 
     useEffect(() => {
         const isDefined = typeof window !== 'undefined'
-        console.log('updated')
+
         if (isDefined) {
 
             const handleScroll = () => {
@@ -47,7 +47,7 @@ export default () => {
 
 // Styled Components
 const Header = styled.header`
-    height: 4.5rem;
+    height: ${props => props.theme.header.mobile};
     position:fixed;
     width:100%;
     left:0;
@@ -57,4 +57,7 @@ const Header = styled.header`
     ${props => props.fixed && `
         box-shadow: rgba(0, 0, 0, 0.17) 0px 1px 5px;
     `}
+    @media (min-width:992px) {
+        height: ${props => props.theme.header.desktop};
+    }
 `
